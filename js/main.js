@@ -9,13 +9,11 @@ var items = 'li';
 var todoList;
 var inputElems = document.getElementsByTagName("input");
 
-
 function sortableMenu (){
     $( "#sortable" ).sortable();
     $( "#sortable" ).disableSelection();
 }
 
-//// bunu ben yazmadım alttaki menüyü sabitliyor
 function notSortable() {
     $('ul').sortable({
         cancel: fixed,
