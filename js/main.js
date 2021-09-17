@@ -53,10 +53,10 @@ $( "#addButton" ).click(function() {
         itemLeft()
         $("#all").css(bold);
         document.getElementById('todo').value = '';
+        saveLocalStorage()
     } else {
         alert("Todo must be at least 3 letter.")
     }
-    saveLocalStorage()
 });
 
 function itemLeft() {
@@ -154,34 +154,26 @@ $( "#clearComplated" ).click(function() {
 })
 
 function saveLocalStorage() {
-    // var labels = document.querySelectorAll("label");
-    // for (var i = 0; i <= inputElems.length; i++) {
-    //     for (var j = 1; j <= (labels.length); j++) {
-    //         if (inputElems[i].type === "checkbox" && inputElems[i].checked === false) {
-    //             console.log(labels[j].innerHTML + '' + inputElems[i].checked)
-    //         } else if (inputElems[i].type === "checkbox" && inputElems[i].checked === true) {
-    //             console.log(labels[j].innerHTML + '' + inputElems[i].checked)
-    //          }
-    //         }
-    //     }
-    // }
-    // var labels = document.querySelectorAll("label")
-    //
-    // for (var i = 0; i <= inputElems.length; i++) {
-    //     if (inputElems[i].type === "checkbox" && inputElems[i].checked === false) {
-    //         for (var j = 1; j <= (labels.length); j++) {
-    //             console.log(labels[j] + '' + inputElems[i].checked)
-    //         }
-    //     } else if (inputElems[i].type === "checkbox" && inputElems[i].checked === true) {
-    //         for (var k = 1; k <= (labels.length); k++) {
-    //             console.log(labels[k] + '' + inputElems[i].checked)
-    //         }
-    //     }
-    // }
+    var labels = document.getElementsByName("checkboxLabel");
+    var store = {}
+    for (var j = 0; j < (labels.length); j++) {
+        console.log(labels[j].innerHTML)
+        // localStorage.setItem("label", JSON.stringify(labels[j]));
+        // console.log(JSON.parse(localStorage.getItem("label")))
+    }
+    for (var i = 0; i < inputElems.length; i++) {
+        if (inputElems[i].type === "checkbox" && inputElems[i].checked === false) {
+            console.log("false")
+            // localStorage.setItem("checkStatus", JSON.stringify(inputElems[i].checked));
+            // console.log(JSON.parse(localStorage.getItem("checkStatus")))
+        } else if (inputElems[i].type === "checkbox" && inputElems[i].checked === true) {
+            console.log("true")
+            // localStorage.setItem("checkStatus", JSON.stringify(inputElems[i].checked));
+            // console.log(JSON.parse(localStorage.getItem("checkStatus")))
+        }
+    }
 }
 
 function updateLocalStorage() {
     window.addEventListener("change", saveLocalStorage)
 }
-
-
