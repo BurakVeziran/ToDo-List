@@ -1,6 +1,7 @@
 $(document).ready(function () {
     sortableMenu()
     notSortable()
+    loadFromLocalStorage()
     updateItemLeft()
     updateLocalStorage()
 });
@@ -151,29 +152,51 @@ $( "#clearComplated" ).click(function() {
     if(inputElems.length === 1){
         $("#notSortable").hide()
     }
+    saveLocalStorage()
 })
 
 function saveLocalStorage() {
     var labels = document.getElementsByName("checkboxLabel");
-    var store = {}
+    var store = [];
+    var checkStatus = [];
     for (var j = 0; j < (labels.length); j++) {
-        console.log(labels[j].innerHTML)
-        // localStorage.setItem("label", JSON.stringify(labels[j]));
-        // console.log(JSON.parse(localStorage.getItem("label")))
+        store.push(labels[j].innerHTML);
+        localStorage.setItem("label", JSON.stringify(store));
     }
     for (var i = 0; i < inputElems.length; i++) {
         if (inputElems[i].type === "checkbox" && inputElems[i].checked === false) {
-            console.log("false")
-            // localStorage.setItem("checkStatus", JSON.stringify(inputElems[i].checked));
-            // console.log(JSON.parse(localStorage.getItem("checkStatus")))
+            checkStatus.push("false");
+            localStorage.setItem("checkStatus", JSON.stringify(checkStatus));
+            console.log(JSON.parse(localStorage.getItem("checkStatus")))
         } else if (inputElems[i].type === "checkbox" && inputElems[i].checked === true) {
-            console.log("true")
-            // localStorage.setItem("checkStatus", JSON.stringify(inputElems[i].checked));
-            // console.log(JSON.parse(localStorage.getItem("checkStatus")))
+            checkStatus.push("true");
+            localStorage.setItem("checkStatus", JSON.stringify(checkStatus));
+            console.log(JSON.parse(localStorage.getItem("checkStatus")));
         }
     }
 }
 
 function updateLocalStorage() {
     window.addEventListener("change", saveLocalStorage)
+}
+
+function loadFromLocalStorage() {
+    var table = $( "#sortable" );
+    var todoInput = JSON.parse(localStorage.getItem("label"));
+    var checkStatus = JSON.parse(localStorage.getItem("checkStatus"))
+    if (todoInput.length > 0){
+        $("#notSortable").show("blind");
+        itemLeft()
+        $("#all").css(bold);
+    }
+    for (i =0; i < todoInput.length; i++) {
+        todoList = '<li class="ui-sortable-handle">' +
+            '<input className="checkbox" type="checkbox" name="checkbox">' +
+            '<label name="checkboxLabel" for="checkbox">' + todoInput[i] + '</label>' +
+            '</li>';
+        table.prepend(todoList)
+        if (checkStatus === true){
+            console.log("basılacak")
+        }
+    }
 }
