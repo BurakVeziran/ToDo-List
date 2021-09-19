@@ -1,3 +1,11 @@
+body {
+    background: rgb(255,136,189);
+    background: linear-gradient(90deg, rgba(255,136,189,1) 0%, rgba(255,101,237,1) 16%, rgba(0,212,255,1) 100%);
+    /*background: rgb(99,52,73);*/
+    /*background: linear-gradient(90deg, rgba(99,52,73,1) 0%, rgba(117,48,109,1) 16%, rgba(0,77,93,1) 100%);*/
+    position: relative;
+}
+
 .container {
     max-width: 1440px;
     padding-right: 0;
@@ -6,17 +14,11 @@
     margin-left: 0;
 }
 
-
 .row > * {
     padding-right: 0;
     padding-left: 0;
     margin-top: 0;
     width: auto;
-}
-
-.background {
-    z-index: -1;
-    width: 100%;
 }
 
 ul {
@@ -28,16 +30,13 @@ ul {
     overflow: hidden;
 }
 
+.header {
+    margin-top: 50px;
+}
+
 input {
     margin-right: 60px;
 }
-
-.header {
-    margin-left: 25%;
-  margin-top: -15%;
-    z-index: 1;
-}
-
 
 .textarea input {
     width: 27em;
@@ -51,7 +50,6 @@ input {
     border-style: solid;
     border-radius: 8px;
     box-shadow: 0px 0px 5px rgba(66,66,66,.75);
-
 }
 
 .addButton {
@@ -97,11 +95,11 @@ input {
 
 .fa-adjust {
     margin-left: 397px;
+    cursor:pointer;
 }
 
 .todoList {
     margin-top: 20px;
-
 }
 
 #sortable {
@@ -117,7 +115,6 @@ input {
     border: 1px solid hsl(0, 0%, 85%);
     border-radius: 1px;
     outline: none;
-
 }
 
 #sortable li:hover {

@@ -4,6 +4,7 @@ $(document).ready(function () {
     loadFromLocalStorage()
     updateItemLeft()
     updateLocalStorage()
+    itemLeft()
 });
 
 var fixed = '.notSortable';
@@ -40,6 +41,8 @@ function notSortable() {
         }
     });
 }
+
+
 
 $( "#addButton" ).click(function() {
     var table = $( "#sortable" );
@@ -167,11 +170,9 @@ function saveLocalStorage() {
         if (inputElems[i].type === "checkbox" && inputElems[i].checked === false) {
             checkStatus.push("false");
             localStorage.setItem("checkStatus", JSON.stringify(checkStatus));
-            console.log(JSON.parse(localStorage.getItem("checkStatus")))
         } else if (inputElems[i].type === "checkbox" && inputElems[i].checked === true) {
             checkStatus.push("true");
             localStorage.setItem("checkStatus", JSON.stringify(checkStatus));
-            console.log(JSON.parse(localStorage.getItem("checkStatus")));
         }
     }
 }
@@ -184,19 +185,21 @@ function loadFromLocalStorage() {
     var table = $( "#sortable" );
     var todoInput = JSON.parse(localStorage.getItem("label"));
     var checkStatus = JSON.parse(localStorage.getItem("checkStatus"))
+    var todoList  = '';
     if (todoInput.length > 0){
         $("#notSortable").show("blind");
         itemLeft()
         $("#all").css(bold);
     }
     for (i =0; i < todoInput.length; i++) {
-        todoList = '<li class="ui-sortable-handle">' +
-            '<input className="checkbox" type="checkbox" name="checkbox">' +
-            '<label name="checkboxLabel" for="checkbox">' + todoInput[i] + '</label>' +
-            '</li>';
-        table.prepend(todoList)
-        if (checkStatus === true){
-            console.log("basılacak")
+        todoList += '<li class="ui-sortable-handle">';
+        if (checkStatus[i] === 'true') {
+            todoList += '<input className="checkbox" type="checkbox" name="checkbox" checked="true">';
+        }else {
+            todoList += '<input className="checkbox" type="checkbox" name="checkbox">';
         }
+        todoList += '<label name="checkboxLabel" for="checkbox">' + todoInput[i] + '</label>' +
+            '</li>';
     }
+    table.prepend(todoList);
 }
