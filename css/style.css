@@ -3,7 +3,6 @@ body {
     background: linear-gradient(90deg, rgba(255,136,189,1) 0%, rgba(255,101,237,1) 16%, rgba(0,212,255,1) 100%);
     /*background: rgb(99,52,73);*/
     /*background: linear-gradient(90deg, rgba(99,52,73,1) 0%, rgba(117,48,109,1) 16%, rgba(0,77,93,1) 100%);*/
-    position: relative;
 }
 
 .container {
