@@ -5,6 +5,7 @@ $(document).ready(function () {
     updateItemLeft()
     updateLocalStorage()
     itemLeft()
+    addWithEnter()
 });
 
 var fixed = '.notSortable';
@@ -42,15 +43,13 @@ function notSortable() {
     });
 }
 
-
-
-$( "#addButton" ).click(function() {
+function addToDo() {
     var table = $( "#sortable" );
     var todoInput = $("#todo").val();
     todoList = '<li class="ui-sortable-handle">' +
-                        '<input className="checkbox" type="checkbox" name="checkbox">' +
-                        '<label name="checkboxLabel" for="checkbox">' + todoInput + '</label>' +
-               '</li>';
+        '<input className="checkbox" type="checkbox" name="checkbox">' +
+        '<label name="checkboxLabel" for="checkbox">' + todoInput + '</label>' +
+        '</li>';
     if (todoInput.length >= 3) {
         table.prepend(todoList);
         $("#notSortable").show("blind");
@@ -61,7 +60,19 @@ $( "#addButton" ).click(function() {
     } else {
         alert("Todo must be at least 3 letter.")
     }
+}
+
+$( "#addButton" ).click(function() {
+    addToDo()
 });
+
+function addWithEnter() {
+    window.addEventListener("keydown", function (e) {
+        if (e.code === "Enter") {
+            addToDo();
+        }
+    })
+}
 
 function itemLeft() {
         count = 0;
@@ -203,3 +214,17 @@ function loadFromLocalStorage() {
     }
     table.prepend(todoList);
 }
+
+function themeSwitch () {
+    $( "body" ).toggleClass( 'backgroundDark', 'addOrRemove' );
+    $( "#todo" ).toggleClass( 'textareaInputDark', 'addOrRemove' );
+    $( "#addButton" ).toggleClass( 'addButtonDark', 'addOrRemove' );
+    $( "#title" ).toggleClass( 'titleDark', 'addOrRemove' );
+    $( "#themeSwitch" ).toggleClass( 'themeSwitchDark', 'addOrRemove' );
+    $( "#listSection" ).toggleClass( 'todoListDark', 'addOrRemove' );
+}
+
+$( "#themeSwitch" ).click(function() {
+   themeSwitch()
+})
+

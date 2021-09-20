@@ -1,8 +1,9 @@
-body {
-    background: rgb(255,136,189);
+.background {
     background: linear-gradient(90deg, rgba(255,136,189,1) 0%, rgba(255,101,237,1) 16%, rgba(0,212,255,1) 100%);
-    /*background: rgb(99,52,73);*/
-    /*background: linear-gradient(90deg, rgba(99,52,73,1) 0%, rgba(117,48,109,1) 16%, rgba(0,77,93,1) 100%);*/
+}
+
+.backgroundDark{
+    background: linear-gradient(90deg, rgba(99,52,73,1) 0%, rgba(117,48,109,1) 16%, rgba(0,77,93,1) 100%)
 }
 
 .container {
@@ -30,15 +31,17 @@ ul {
 }
 
 .header {
-    margin-top: 50px;
+    max-width: 500px;
+    margin: 20px auto;
+    position: relative
 }
 
 input {
     margin-right: 60px;
 }
 
-.textarea input {
-    width: 27em;
+.textareaInput {
+    width: 28em;
     text-align: left;
     padding: 5px;
     font-size: 16px;
@@ -48,7 +51,14 @@ input {
     color: #000000;
     border-style: solid;
     border-radius: 8px;
-    box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+    box-shadow: 0 0 5px rgba(66,66,66,.75);
+    margin-right: 0;
+}
+
+.textareaInputDark {
+    border-color:  hsl(235, 24%, 19%);
+    background-color:  hsl(235, 24%, 19%);
+    color:  hsl(235, 24%, 19%);
 }
 
 .addButton {
@@ -63,6 +73,8 @@ input {
     font-weight:bold;
     padding:5px 8px;
     text-decoration:none;
+    float: right;
+
 }
 
 .addButton:hover {
@@ -75,12 +87,27 @@ input {
     transform: translateY(4px);
 }
 
-.header h1 {
+.addButtonDark {
+    background:hsl(235, 24%, 19%);
+    border:2px solid hsl(235, 24%, 19%);
+
+}
+
+.addButtonDark:hover {
+    background:hsl(233, 14%, 35%);
+
+}
+
+.title {
     float: left;
     color: #FFFFFF;
 }
 
-.header i {
+.titleDark {
+    color:hsl(235, 24%, 19%);
+}
+
+.themeSwitch {
     color: #FFFFFF;
     font-size: 29px;
     float: right;
@@ -88,13 +115,18 @@ input {
     margin-top: 12px;
 }
 
-.header i:active {
+.themeSwitch:active {
     opacity: 0.5;
+}
+
+.themeSwitchDark {
+    color:hsl(235, 24%, 19%);
 }
 
 .fa-adjust {
     margin-left: 397px;
     cursor:pointer;
+    position: absolute;
 }
 
 .todoList {
@@ -105,10 +137,10 @@ input {
     list-style-type: none;
     position: absolute;
     border-radius: 3%;
-    box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+    box-shadow: 0 0 5px rgba(66,66,66,.75);
 }
 
-#sortable input {
+.todos input {
     width: 1.25rem;
     height: 1.25rem;
     border: 1px solid hsl(0, 0%, 85%);
@@ -116,15 +148,15 @@ input {
     outline: none;
 }
 
-#sortable li:hover {
-    border-bottom-color: hsl(0, 0%, 68%););
+.todos li:hover {
+    border-bottom-color: hsl(0, 0%, 68%);
 }
 
-#sortable li:hover:last-child {
+.todos li:hover:last-child {
     border-bottom-color: #FFFFFF;
 }
 
-#sortable input:checked + label {
+.todos input:checked + label {
     text-decoration: line-through;
     color: hsl(0, 0%, 70%);
     font-weight: 600;
@@ -147,6 +179,19 @@ input {
 .todoList ul li:last-child {
     border-bottom-color: #FFFFFF;
 }
+
+.todoListDark ul li {
+    background: hsl(235, 24%, 19%);
+    border-bottom: hsl(290, 0%, 19%) solid;
+}
+
+.todoListDark ul li label{
+    color: #FFFFFF;
+}
+.todoListDark ul li:last-child{
+    border-bottom: hsl(290, 0%, 19%) solid;
+}
+
 
 .checkbox {
     margin-right: 55px;
